@@ -23,7 +23,7 @@ exports.uploadFile=async(req,res)=>{
         const newFile = new File({
             title,
             description,
-            attachment: req.file.path
+             attachment: req.file.path.replace(/\\/g, '/')
         });
 
         await newFile.save();
