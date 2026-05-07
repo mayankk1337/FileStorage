@@ -38,7 +38,7 @@ function App() {
         name: file.attachment?.split('/').pop() || file.title,
         size: null,
         path: file.attachment,
-        previewUrl: file.attachment?.startsWith('uploads/') ? `https://filestoragebackend.onrender.com/${file.attachment}` : file.attachment,
+        previewUrl: `https://filestoragebackend.onrender.com/${file.attachment.replace(/\\/g, '/')}`,
         uploadedAt: file.createdAt ? new Date(file.createdAt).toLocaleString() : '',
       }))
 
