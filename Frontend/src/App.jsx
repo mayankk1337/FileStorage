@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const API_URL = import.meta.env.VITE_API_URL || '/api'
+const API_URL = 'https://filestoragebackend.onrender.com/api'
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -38,7 +38,7 @@ function App() {
         name: file.attachment?.split('/').pop() || file.title,
         size: null,
         path: file.attachment,
-        previewUrl: file.attachment?.startsWith('uploads/') ? `/${file.attachment}` : file.attachment,
+        previewUrl: file.attachment?.startsWith('uploads/') ? `https://filestoragebackend.onrender.com/${file.attachment}` : file.attachment,
         uploadedAt: file.createdAt ? new Date(file.createdAt).toLocaleString() : '',
       }))
 
