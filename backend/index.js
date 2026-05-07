@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const UploadRoute = require('./routes/fileRoutes');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 const app = express();
 
@@ -12,6 +13,10 @@ const corsOptions = {
     origin: 'https://filestoragefrontend.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
+}
+
+if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads');
 }
 
 app.use(cors(corsOptions));
