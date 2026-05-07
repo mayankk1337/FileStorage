@@ -16,7 +16,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use("uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 app.use("/api", UploadRoute);
 
 app.get('/', (req, res) => {
@@ -30,7 +30,8 @@ mongoose.connect(process.env.MONGODB_URI)
     console.error('Error connecting to MongoDB:', err);
 });
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
